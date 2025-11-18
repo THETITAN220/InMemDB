@@ -1,3 +1,5 @@
+# Shell script to run the project on unix based systems
+
 set -e
 
 (
