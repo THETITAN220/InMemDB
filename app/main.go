@@ -41,14 +41,14 @@ func handleConnection(conn net.Conn) {
 	scanner := bufio.NewScanner(conn)
 	for scanner.Scan() {
 		text := strings.TrimSpace(scanner.Text())
-		if text == "PING" {
+		if strings.Contains(text, "PING") {
 			_, err := conn.Write([]byte("+PONG\r\n"))
 			if err != nil {
 				fmt.Println("Error writing PONG response: ", err.Error())
 				break
 			}
 		} else {
-			errorMessage := fmt.Sprintf(" Error invalid command: %s\r\n ", text)
+			errorMessage := fmt.Sprintf("-ERR Error invalid command: %s\r\n", text)
 			_, err := conn.Write([]byte(errorMessage))
 			if err != nil {
 				fmt.Println("Error writing error response: ", err.Error())
