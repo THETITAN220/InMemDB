@@ -36,7 +36,7 @@ func handleConnection(conn net.Conn) {
 
 	defer conn.Close()
 
-	fmt.Printf("Client conncted to the port %s\n", conn.RemoteAddr())
+	fmt.Printf("Client connected to the port %s\n", conn.RemoteAddr())
 
 	scanner := bufio.NewScanner(conn)
 	for scanner.Scan() {
